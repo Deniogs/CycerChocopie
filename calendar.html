@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Календарь - Спортики РФ</title>
+</head>
+<body>
+    <header>
+        <h1>Календарь спортивных событий</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="calendar.html">Календарь</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="calendar-controls">
+            <div class="period-selector">
+                <button data-period="1">1 месяц</button>
+                <button data-period="3">3 месяца</button>
+                <button data-period="6">6 месяцев</button>
+            </div>
+            
+            <div class="sport-filter">
+                <select id="sportType">
+                    <option value="all">Все виды спорта</option>
+                    <option value="football">Футбол</option>
+                    <option value="hockey">Хоккей</option>
+                    <option value="gymnastics">Гимнастика</option>
+                    <option value="athletics">Легкая атлетика</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="calendar-grid" class="calendar-grid">
+            <!-- Calendar will be generated here -->
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Страницы</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="calendar.html">Календарь</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>Телефон: +7 (XXX) XXX-XX-XX</li>
+                    <li>Email: info@sportiki.ru</li>
+                    <li>Адрес: г. Мелитополь, пр. Богдана Хмельницкого, 57</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <ul>
+                    <li><a href="#">VK</a></li>
+                    <li><a href="#">Telegram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Спортики РФ. Все права защищены.</p>
+        </div>
+    </footer>  
+    
+    <!-- Footer remains the same -->
+</body>
+
+<script>
+const events = [
+    {
+        date: '2024-01-15',
+        title: 'Чемпионат России по фигурному катанию',
+        sport: 'skating'
+    },
+    {
+        date: '2024-02-05',
+        title: 'Чемпионат по хоккею с мячом',
+        sport: 'hockey'
+    }
+    // Add more events
+];
+
+function generateCalendar(months, sportFilter = 'all') {
+    const calendarGrid = document.getElementById('calendar-grid');
+    calendarGrid.innerHTML = '';
+    
+    const today = new Date();
+    
+    for (let i = 0; i < months; i++) {
+        const currentMonth = new Date(today.getFullYear(), today.getMonth() + i, 1);
+        const monthContainer = createMonthContainer(currentMonth, sportFilter);
+        calendarGrid.appendChild(monthContainer);
+    }
+}
+
+function createMonthContainer(date, sportFilter) {
+    const container = document.createElement('div');
+    container.className = 'month-container';
+    
+    // Add month header and calendar grid here
+    // Filter events based on sportFilter
+    
+    return container;
+}
+
+// Event Listeners
+document.querySelectorAll('.period-selector button').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const months = parseInt(e.target.dataset.period);
+        const sportType = document.getElementById('sportType').value;
+        generateCalendar(months, sportType);
+    });
+});
+
+document.getElementById('sportType').addEventListener('change', (e) => {
+    const months = parseInt(document.querySelector('.period-selector button.active').dataset.period);
+    generateCalendar(months, e.target.value);
+});
+
+// Initial calendar generation
+generateCalendar(1, 'all');
+</script>
+</html>

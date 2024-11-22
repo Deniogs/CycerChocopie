@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Спортики РФ</title>
+</head>
+<body>
+
+    <header>
+        <h1>Добро пожаловать на сайт спортики РФ</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О нас</a></li>
+                <li><a href="calendar.html">Календарь</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>О нас</h2>
+            <p>На нашем сайте вы сможете узнать актуальную информацию о спортивных соревнованиях Российской Федерации.</p>
+        </section>
+        
+        <section>
+            <h2>Ближайшие соревнования</h2>
+            <p>Следите за главными спортивными событиями страны:</p>
+            <ul>
+                <li>Чемпионат России по футболу 2024</li>
+                <li>Всероссийские соревнования по художественной гимнастике</li>
+                <li>Кубок России по хоккею</li>
+                <li>Чемпионат по легкой атлетике</li>
+            </ul>
+        </section>
+    
+        <section>
+            <h2>Виды спорта</h2>
+            <p>Мы освещаем все популярные спортивные дисциплины:</p>
+            <ul>
+                <li>Футбол</li>
+                <li>Хоккей</li>
+                <li>Баскетбол</li>
+                <li>Волейбол</li>
+                <li>Легкая атлетика</li>
+                <li>Гимнастика</li>
+            </ul>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Страницы</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="about.html">О нас</a></li>
+                    <li><a href="calendar.html">Календарь</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li>Телефон: +7 (XXX) XXX-XX-XX</li>
+                    <li>Email: info@sportiki.ru</li>
+                    <li>Адрес: г. Мелитополь, пр. Богдана Хмельницкого, 57</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Социальные сети</h3>
+                <ul>
+                    <li><a href="#">VK</a></li>
+                    <li><a href="#">Telegram</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Спортики РФ. Все права защищены.</p>
+        </div>
+    </footer>    
+</body>
+
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    });
+
+    const sections = document.querySelectorAll('section');
+    sections.forEach((section) => {
+        section.classList.add('hidden');
+        observer.observe(section);
+    });
+</script>
+
+
+</html>
